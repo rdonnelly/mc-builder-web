@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 
 import CardDetail from '@shared/components/CardDetail';
@@ -5,7 +6,14 @@ import { Card, getCard, getCards } from '@shared/data/models/Card';
 
 const CardPage = ({ rawCard }) => {
   const card = new Card(rawCard);
-  return <CardDetail card={card} width={768} />;
+  return (
+    <>
+      <Head>
+        <title>{`${card.name} | MC Builder`}</title>
+      </Head>
+      <CardDetail card={card} width={768} />
+    </>
+  );
 };
 
 // This function gets called at build time
