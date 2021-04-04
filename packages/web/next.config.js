@@ -1,6 +1,8 @@
 const withTM = require('next-transpile-modules')([
   'shared',
   'styled-components',
+  'react-native-render-html',
+  'react-native-vector-icons',
 ]);
 
 module.exports = withTM({
