@@ -1,4 +1,7 @@
-const withTM = require('next-transpile-modules')(['shared']);
+const withTM = require('next-transpile-modules')([
+  'shared',
+  'styled-components',
+]);
 
 module.exports = withTM({
   webpack: (config) => {
