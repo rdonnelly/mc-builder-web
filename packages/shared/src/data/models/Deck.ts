@@ -151,9 +151,7 @@ export class Deck {
   get isLegal(): boolean {
     // TODO restricted list
     // TODO spider-woman equal double aspect
-    const what = 'woo';
-    return what === 'woo';
-    // return this.cardCount >= 40 && this.cardCount <= 50;
+    return this.cardCount >= 40 && this.cardCount <= 50;
   }
 
   get prettyText(): string {

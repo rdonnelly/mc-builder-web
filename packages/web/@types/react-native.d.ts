@@ -1,4 +1,5 @@
-import * as ReactNative from 'react-native';
+import React from 'react';
+import * as ReactNative from 'react-native'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 declare module 'react-native' {
   namespace AppRegistry {
