@@ -1,3 +1,4 @@
+import { useWindowWidth } from '@react-hook/window-size/throttled';
 import Head from 'next/head';
 import React from 'react';
 
@@ -6,12 +7,15 @@ import { Card, getCard, getCards } from '@shared/data/models/Card';
 
 const CardPage = ({ rawCard }) => {
   const card = new Card(rawCard);
+  const windowWidth = useWindowWidth();
+  const width = Math.min(windowWidth, 768);
+
   return (
     <>
       <Head>
         <title>{`${card.name} | MC Builder`}</title>
       </Head>
-      <CardDetail card={card} width={768} />
+      <CardDetail card={card} width={width} />
     </>
   );
 };
