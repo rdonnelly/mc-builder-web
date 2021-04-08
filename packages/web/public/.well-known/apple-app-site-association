@@ -6,6 +6,10 @@
                 "appIDs": ["1516561943.com.rdonnelly.mcdb"],
                 "components": [
                   {
+                    "/": "*",
+                    "comment": "Matches any URL"
+                  },
+                  {
                     "/": "/cards/*",
                     "comment": "Matches any URL whose path starts with /cards/"
                   },
@@ -17,7 +21,7 @@
             },
             {
                 "appID": "1516561943.com.rdonnelly.mcdb",
-                "paths": [ "/cards/*", "/decks/*"]
+                "paths": ["*", "/cards/*", "/decks/*"]
             }
         ]
     },
