@@ -3,7 +3,7 @@
         "apps": [],
         "details": [
             {
-                "appIDs": ["1516561943.com.rdonnelly.mcdb"],
+                "appIDs": ["EZ4AQB6GC7.com.rdonnelly.mcdb"],
                 "components": [
                   {
                     "/": "*",
@@ -20,14 +20,14 @@
                 ]
             },
             {
-                "appID": "1516561943.com.rdonnelly.mcdb",
+                "appID": "EZ4AQB6GC7.com.rdonnelly.mcdb",
                 "paths": ["*", "/cards/*", "/decks/*"]
             }
         ]
     },
     "activitycontinuation": {
         "apps": [
-            "1516561943.com.rdonnelly.mcdb"
+            "EZ4AQB6GC7.com.rdonnelly.mcdb"
         ]
     }
 }
