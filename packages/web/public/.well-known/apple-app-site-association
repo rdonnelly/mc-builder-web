@@ -3,9 +3,27 @@
         "apps": [],
         "details": [
             {
+                "appIDs": ["1516561943.com.rdonnelly.mcdb"],
+                "components": [
+                  {
+                    "/": "/cards/*",
+                    "comment": "Matches any URL whose path starts with /cards/"
+                  },
+                  {
+                    "/": "/decks/*",
+                    "comment": "Matches any URL whose path starts with /decks/"
+                  }
+                ]
+            },
+            {
                 "appID": "1516561943.com.rdonnelly.mcdb",
                 "paths": [ "/cards/*", "/decks/*"]
             }
+        ]
+    },
+    "activitycontinuation": {
+        "apps": [
+            "1516561943.com.rdonnelly.mcdb"
         ]
     }
 }
