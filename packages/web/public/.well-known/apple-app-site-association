@@ -6,22 +6,14 @@
                 "appIDs": ["EZ4AQB6GC7.com.rdonnelly.mcdb"],
                 "components": [
                   {
-                    "/": "*",
-                    "comment": "Matches any URL"
-                  },
-                  {
                     "/": "/cards/*",
                     "comment": "Matches any URL whose path starts with /cards/"
                   },
-                  {
-                    "/": "/decks/*",
-                    "comment": "Matches any URL whose path starts with /decks/"
-                  }
                 ]
             },
             {
                 "appID": "EZ4AQB6GC7.com.rdonnelly.mcdb",
-                "paths": ["*", "/cards/*", "/decks/*"]
+                "paths": [/cards/*"]
             }
         ]
     },
