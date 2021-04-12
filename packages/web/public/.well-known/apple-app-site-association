@@ -8,12 +8,12 @@
                   {
                     "/": "/cards/*",
                     "comment": "Matches any URL whose path starts with /cards/"
-                  },
+                  }
                 ]
             },
             {
                 "appID": "EZ4AQB6GC7.com.rdonnelly.mcdb",
-                "paths": [/cards/*"]
+                "paths": ["/cards/*"]
             }
         ]
     },
