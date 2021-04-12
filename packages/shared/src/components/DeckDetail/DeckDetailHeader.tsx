@@ -1,14 +1,16 @@
-import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 
 import { DeckModel } from '../../data';
 import { colors } from '../../styles';
 
-const DeckHeader: React.FunctionComponent<{
+const DeckHeader = ({
+  deck,
+  onPressIdentity,
+}: {
   deck: DeckModel;
   onPressIdentity?: (code: string) => void;
-}> = ({ deck, onPressIdentity }) => {
+}) => {
   const identityCards = deck.identityCards;
   const deckCardCount = deck.cardCount;
 
@@ -17,14 +19,14 @@ const DeckHeader: React.FunctionComponent<{
       {identityCards && identityCards.length ? (
         <IdentityWrapper>
           {identityCards.map((card) =>
-            card.imageSrc ? (
+            card.imageUriSet != null ? (
               <Identity
                 key={`identity_${card.code}`}
                 onPress={() =>
                   onPressIdentity ? onPressIdentity(card.code) : null
                 }
               >
-                <IdentityImage source={{ uri: card.imageSrc }} />
+                <IdentityImage source={{ uri: card.imageUriSet[0] }} />
               </Identity>
             ) : null,
           )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Image, Platform } from 'react-native';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
@@ -6,15 +6,13 @@ import styled from 'styled-components/native';
 import { CardModel } from '../../data';
 
 const CardDetailImage = ({
-  card,
   imageUri,
   maxWidth,
   shareCardImage,
 }: {
-  card: CardModel;
   imageUri: string;
   maxWidth: number;
-  shareCardImage?: (card: CardModel) => void;
+  shareCardImage?: (uri: string) => void;
 }) => {
   const [imageHeight, setImageHeight] = useState(0);
   const [imageWidth, setImageWidth] = useState(0);
@@ -40,7 +38,7 @@ const CardDetailImage = ({
   return (
     <Pressable
       disabled={Platform.OS !== 'ios'}
-      onLongPress={() => shareCardImage(card)}
+      onLongPress={() => shareCardImage(imageUri)}
     >
       {({ pressed }) => (
         <CardDetailImageContainer
@@ -62,7 +60,7 @@ const CardDetailImages = ({
 }: {
   card: CardModel;
   maxWidth: number;
-  shareCardImage?: (card: CardModel) => void;
+  shareCardImage?: (uri: string) => void;
 }) => {
   const imageUriSet = card.imageUriSet;
 
@@ -71,7 +69,6 @@ const CardDetailImages = ({
       {imageUriSet.map((imageUri, i) => (
         <CardDetailImage
           key={`card_image_${card.code}_${i}`}
-          card={card}
           imageUri={imageUri}
           maxWidth={maxWidth}
           shareCardImage={shareCardImage}

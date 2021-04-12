@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5Pro';
 import styled from 'styled-components/native';
@@ -46,7 +46,7 @@ const getResourceIcons = (card: CardModel) => {
             <Icon
               code={IconCode[resourceKey]}
               color={colors.icons[resourceKey]}
-              key={`resource_icon_${i}`}
+              key={`resource_icon_${resourceKey}_${i}`}
             />
           )),
       );
@@ -74,9 +74,9 @@ const CardListItem = ({
   onPressItem?: (code: string) => void;
   showEditControls?: boolean;
   showPackInfo?: boolean;
-  increment?: (card: CardModel) => void;
+  increment?: (card: CardModel, quantity: number) => void;
   incrementIsDisabled?: (card: CardModel, quantity: number) => boolean;
-  decrement?: (card: CardModel) => void;
+  decrement?: (card: CardModel, quantity: number) => void;
   decrementIsDisabled?: (card: CardModel, quantity: number) => boolean;
 }) => {
   let infoText = '';
@@ -126,7 +126,7 @@ const CardListItem = ({
             {showEditControls === true ? (
               <CardControls>
                 <CardCountIncrementButton
-                  onPress={() => increment(card)}
+                  onPress={() => increment(card, count)}
                   active={!incrementIsDisabled(card, count)}
                 >
                   {({ pressed: cardControlPressed }) => (
@@ -151,7 +151,7 @@ const CardListItem = ({
                   )}
                 </CardCountIncrementButton>
                 <CardCountDecrementButton
-                  onPress={() => decrement(card)}
+                  onPress={() => decrement(card, count)}
                   active={!decrementIsDisabled(card, count)}
                 >
                   {({ pressed: cardControlPressed }) => (

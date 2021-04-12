@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -28,7 +28,7 @@ const CardDetail = ({
   card: CardModel;
   width: number;
   hideTitle?: boolean;
-  shareCardImage?: (card: CardModel) => void;
+  shareCardImage?: (uri: string) => void;
 }) => {
   return (
     <CardDetailContainer width={width}>
