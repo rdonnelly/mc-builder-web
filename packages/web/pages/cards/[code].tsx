@@ -1,6 +1,5 @@
 import { useWindowWidth } from '@react-hook/window-size/throttled';
 import Head from 'next/head';
-import React from 'react';
 
 import CardDetail from '@shared/components/CardDetail';
 import { Card, getCard, getCards } from '@shared/data/models/Card';

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
 import styled from 'styled-components/native';
 
 const IndexPage = () => {

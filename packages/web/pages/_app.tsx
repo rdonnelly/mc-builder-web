@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import useDarkMode from 'use-dark-mode';
 

@@ -5,7 +5,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import * as React from 'react';
 import { Children } from 'react';
 import { AppRegistry } from 'react-native';
 
