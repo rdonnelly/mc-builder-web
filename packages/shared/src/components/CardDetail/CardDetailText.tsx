@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import Html from 'react-native-render-html';
 import styled from 'styled-components/native';
@@ -67,7 +68,7 @@ const renderCardText = (card: CardModel, key: string, isFlavor = false) => {
 const renderCardSchemeTraits = (card: CardModel) => {
   const icons = [];
 
-  if (card.raw.scheme_acceleration) {
+  if (card.schemeAcceleration) {
     icons.push(
       <Icon
         code={IconCode.acceleration}
@@ -78,7 +79,7 @@ const renderCardSchemeTraits = (card: CardModel) => {
     );
   }
 
-  if (card.raw.scheme_crisis) {
+  if (card.schemeCrisis) {
     icons.push(
       <Icon
         code={IconCode.crisis}
@@ -89,7 +90,7 @@ const renderCardSchemeTraits = (card: CardModel) => {
     );
   }
 
-  if (card.raw.scheme_hazard) {
+  if (card.schemeHazard) {
     icons.push(
       <Icon
         code={IconCode.hazard}

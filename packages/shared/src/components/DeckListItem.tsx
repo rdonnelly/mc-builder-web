@@ -1,3 +1,4 @@
+import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import styled from 'styled-components/native';
 
