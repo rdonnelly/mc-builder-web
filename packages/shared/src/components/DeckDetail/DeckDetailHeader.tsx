@@ -1,14 +1,16 @@
-import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 import { DeckModel } from '../../data';
 import { colors } from '../../styles';
 
-const DeckHeader: React.FunctionComponent<{
+const DeckHeader = ({
+  deck,
+  onPressIdentity,
+}: {
   deck: DeckModel;
   onPressIdentity?: (code: string) => void;
-}> = ({ deck, onPressIdentity }) => {
+}) => {
   const identityCards = deck.identityCards;
   const deckCardCount = deck.cardCount;
 
@@ -48,7 +50,9 @@ const DeckHeader: React.FunctionComponent<{
 
 const Container = styled.View`
   background-color: ${colors.lightGray};
-  margin: 16px;
+  border-bottom-color: ${colors.white};
+  border-bottom-width: ${StyleSheet.hairlineWidth}px;
+  padding: 16px;
   width: 100%;
 `;
 

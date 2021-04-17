@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { SectionList, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -17,7 +17,7 @@ const DeckDetailList = ({
   handlePressItem,
 }: {
   deck: DeckModel;
-  handlePressItem: (cardCode: string) => void;
+  handlePressItem?: (cardCode: string) => void;
 }) => {
   const renderSectionHeader = ({ section }) => (
     <SectionHeader>
