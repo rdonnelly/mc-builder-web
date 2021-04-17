@@ -9,6 +9,10 @@ import useDarkMode from 'use-dark-mode';
 import { darkTheme, lightTheme } from '@shared/styles';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
   html,
   body {
     padding: 0;
@@ -17,8 +21,19 @@ const GlobalStyle = createGlobalStyle`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
-  * {
-    box-sizing: border-box;
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #__next {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 `;
 
