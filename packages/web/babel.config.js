@@ -11,7 +11,7 @@ module.exports = {
         },
       },
     ],
+    ['styled-components', { ssr: true, displayName: true, preprocess: false }],
     ['react-native-web', { commonjs: true }],
-    ['styled-components', { ssr: true }],
   ],
 };

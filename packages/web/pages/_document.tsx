@@ -5,39 +5,36 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { Children } from 'react';
 import { AppRegistry } from 'react-native';
-
-import { name as appName } from '../package.json';
-
-// Force Next-generated DOM elements to fill their parent's height
-const normalizeNextElements = `
-  #__next {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  html {
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
-    overflow: hidden;
-  }
-`;
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }: DocumentContext) {
-    AppRegistry.registerComponent(appName, () => Main);
-    const { getStyleElement } = AppRegistry.getApplication(appName);
-    const page = await renderPage();
-    const styles = [
-      <style dangerouslySetInnerHTML={{ __html: normalizeNextElements }} />,
-      getStyleElement(),
-    ];
-    return { ...page, styles: Children.toArray(styles) };
+  static async getInitialProps(ctx: DocumentContext) {
+    AppRegistry.registerComponent('MCBuilder', () => Main);
+
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 
   render() {
