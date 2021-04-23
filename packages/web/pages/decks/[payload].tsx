@@ -14,6 +14,8 @@ import {
   parseDeckJson,
 } from '@shared/utils/DeckParser';
 
+import getAbsoluteUrl from '../../utils/getAbsoluteUrl';
+
 const DeckPage = ({
   storeDeck,
   storeDeckCards,
@@ -37,6 +39,14 @@ const DeckPage = ({
     <>
       <Head>
         <title>{title}</title>
+        <meta property="og:url" content={getAbsoluteUrl(router.pathname)} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={deck.name} />
+        <meta property="og:description" content={deck.description} />
+        <meta
+          property="og:image"
+          content={getAbsoluteUrl('/images/mc-icon-1024.png')}
+        />
       </Head>
       <DeckDetailHeader deck={deck} />
       <DeckDetailList deck={deck} handlePressItem={handlePressItem} />
