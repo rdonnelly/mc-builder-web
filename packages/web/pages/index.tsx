@@ -1,16 +1,31 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styled from 'styled-components/native';
 
 import { base, colors } from '@shared/styles';
 
 import Header from '../components/Header';
+import getAbsoluteUrl from '../utils/getAbsoluteUrl';
 
 const IndexPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <Head>
         <title>MC Builder</title>
         <meta name="apple-itunes-app" content="app-id=1516561943" />
+        <meta property="og:url" content={router.asPath} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MC Builder" />
+        <meta
+          property="og:description"
+          content="The premier mobile deck builder and card browser for one of our favorite games"
+        />
+        <meta
+          property="og:image"
+          content={getAbsoluteUrl('/images/mc-icon-1024.png')}
+        />
       </Head>
       <Header color={colors.blue}>MC Builder</Header>
       <ScrollView>
