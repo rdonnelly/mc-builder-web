@@ -7,9 +7,11 @@ import { base, colors } from '@shared/styles';
 const Header = ({
   children,
   color,
+  textColor,
 }: {
   children?: React.ReactNode;
-  color: string;
+  color?: string;
+  textColor?: string;
 }) => {
   return (
     <Container color={color}>
@@ -24,15 +26,15 @@ const Header = ({
         </Link>
       </Control>
       <Title>
-        <TitleText>{children}</TitleText>
+        <TitleText color={textColor}>{children}</TitleText>
       </Title>
       <Control />
     </Container>
   );
 };
 
-const Container = styled(base.Container)<{ color: string }>`
-  background-color: ${(props) => props.color};
+const Container = styled(base.Container)<{ color?: string }>`
+  background-color: ${(props) => (props.color ? props.color : colors.darkGray)};
   flex: 0 0 auto;
   flex-direction: row;
   height: 48px;
@@ -54,8 +56,8 @@ const Title = styled.View`
   justify-content: center;
 `;
 
-const TitleText = styled.Text`
-  color: ${colors.white};
+const TitleText = styled.Text<{ color?: string }>`
+  color: ${(props) => (props.color ? props.color : colors.white)};
   font-size: ${({ theme }) => theme.fontSize.list};
   font-weight: 600;
 `;
