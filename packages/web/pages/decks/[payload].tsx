@@ -21,17 +21,15 @@ import getAbsoluteUrl from '../../utils/getAbsoluteUrl';
 const DeckPage = ({
   storeDeck,
   storeDeckCards,
+  meta,
 }: {
   storeDeck: IStoreDeck;
   storeDeckCards: IStoreDeckCard[];
+  meta: any;
 }) => {
   const router = useRouter();
 
   const deck = new DeckModel(storeDeck, storeDeckCards);
-  const deckName = deck.name;
-
-  const title =
-    deck != null ? `${deckName} | Decks | MC Builder` : 'Decks | MC Builder';
 
   const handlePressItem = (cardCode: string) => {
     router.push(`/cards/${cardCode}`);
@@ -40,13 +38,17 @@ const DeckPage = ({
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta property="og:url" content={router.asPath} />
+        <title>{`${meta.title} | Decks | MC Builder`}</title>
+        <meta property="og:url" content={meta.url} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={deck.name} />
-        <meta property="og:description" content={deck.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
         <meta
           property="og:image"
+          content={getAbsoluteUrl('/images/mc-icon-1024.png')}
+        />
+        <meta
+          property="og:image:secure_url"
           content={getAbsoluteUrl('/images/mc-icon-1024.png')}
         />
       </Head>
@@ -85,7 +87,19 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
-  return { props: { storeDeck, storeDeckCards } };
+  const deck = new DeckModel(storeDeck, storeDeckCards);
+
+  return {
+    props: {
+      storeDeck,
+      storeDeckCards,
+      meta: {
+        description: deck.description,
+        title: deck.name,
+        url: getAbsoluteUrl(`/decks/${payload}`),
+      },
+    },
+  };
 };
 
 export default DeckPage;

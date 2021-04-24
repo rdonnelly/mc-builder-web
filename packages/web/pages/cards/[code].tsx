@@ -6,16 +6,27 @@ import { Card, getCard, getCards } from '@shared/data/models/Card';
 import { colors } from '@shared/styles';
 
 import Header from '../../components/Header';
+import getAbsoluteUrl from '../../utils/getAbsoluteUrl';
 
-const CardPage = ({ rawCard }) => {
-  const card = new Card(rawCard);
+const CardPage = ({ rawCard, meta }) => {
   const windowWidth = useWindowWidth();
   const width = Math.min(windowWidth, 768);
+
+  const card = new Card(rawCard);
 
   return (
     <>
       <Head>
-        <title>{`${card.name} | MC Builder`}</title>
+        <title>{`${meta.title} | MC Builder`}</title>
+        <meta property="og:url" content={meta.url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={meta.title} />
+        <meta
+          property="og:description"
+          content="MC Builder: the premier mobile deck builder and card browser for one of our favorite games"
+        />
+        <meta property="og:image" content={meta.imageUrl} />
+        <meta property="og:image:secure_url" content={meta.imageUrl} />
       </Head>
       <Header color={colors.orange}>Cards</Header>
       <CardDetail card={card} width={width} />
@@ -44,7 +55,16 @@ export async function getStaticProps({ params }) {
   const card = getCard(code);
 
   // Pass post data to the page via props
-  return { props: { rawCard: card.raw } };
+  return {
+    props: {
+      rawCard: card.raw,
+      meta: {
+        imageUrl: card.imageUriSet[0],
+        title: card.name,
+        url: getAbsoluteUrl(`/cards/${code}`),
+      },
+    },
+  };
 }
 
 export default CardPage;
