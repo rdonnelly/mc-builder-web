@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import styled from 'styled-components/native';
 
+import { base, colors } from '@shared/styles';
+
+import Header from '../components/Header';
+
 const IndexPage = () => {
   return (
     <>
@@ -8,7 +12,7 @@ const IndexPage = () => {
         <title>MC Builder</title>
         <meta name="apple-itunes-app" content="app-id=1516561943" />
       </Head>
-
+      <Header color={colors.lightGray} />
       <Container>
         <img
           src="/images/mc-icon-1024.png"
@@ -21,9 +25,8 @@ const IndexPage = () => {
   );
 };
 
-const Container = styled.View`
+const Container = styled(base.Container)`
   align-items: center;
-  flex: 1 1 auto;
   justify-content: center;
   width: 100%;
 `;

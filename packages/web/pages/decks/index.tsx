@@ -3,6 +3,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+import { colors } from '@shared/styles';
+
+import Header from '../../components/Header';
+
 const DeckPage = () => {
   const router = useRouter();
   const [payload, setPayload] = useState('');
@@ -38,12 +42,12 @@ const DeckPage = () => {
       <Head>
         <title>{`Decks | MC Builder`}</title>
       </Head>
-      <h1>Decks</h1>
+      <Header color={colors.purple}>Decks</Header>
       <form onSubmit={handleSubmit}>
         <input
           name="payload"
           onChange={handlePayloadChange}
-          placeholder="Paste Deck Here..."
+          placeholder="Paste Share URL..."
           type="text"
         />
         <input type="submit" value="Submit" />

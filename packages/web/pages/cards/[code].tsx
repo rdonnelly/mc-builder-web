@@ -3,6 +3,9 @@ import Head from 'next/head';
 
 import CardDetail from '@shared/components/CardDetail';
 import { Card, getCard, getCards } from '@shared/data/models/Card';
+import { colors } from '@shared/styles';
+
+import Header from '../../components/Header';
 
 const CardPage = ({ rawCard }) => {
   const card = new Card(rawCard);
@@ -14,6 +17,7 @@ const CardPage = ({ rawCard }) => {
       <Head>
         <title>{`${card.name} | MC Builder`}</title>
       </Head>
+      <Header color={colors.orange}>Cards</Header>
       <CardDetail card={card} width={width} />
     </>
   );

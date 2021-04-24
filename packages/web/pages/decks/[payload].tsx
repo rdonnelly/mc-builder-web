@@ -7,6 +7,7 @@ import DeckDetailHeader from '@shared/components/DeckDetail/DeckDetailHeader';
 import DeckDetailList from '@shared/components/DeckDetail/DeckDetailList';
 import { DeckModel } from '@shared/data';
 import { IStoreDeck, IStoreDeckCard } from '@shared/store/types';
+import { colors } from '@shared/styles';
 import {
   convertImportToStoreDeckComponents,
   IImportDeck,
@@ -14,6 +15,7 @@ import {
   parseDeckJson,
 } from '@shared/utils/DeckParser';
 
+import Header from '../../components/Header';
 import getAbsoluteUrl from '../../utils/getAbsoluteUrl';
 
 const DeckPage = ({
@@ -48,6 +50,7 @@ const DeckPage = ({
           content={getAbsoluteUrl('/images/mc-icon-1024.png')}
         />
       </Head>
+      <Header color={colors.purple}>Decks</Header>
       <DeckDetailHeader deck={deck} />
       <DeckDetailList deck={deck} handlePressItem={handlePressItem} />
     </>
