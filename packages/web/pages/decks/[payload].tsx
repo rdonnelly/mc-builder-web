@@ -39,7 +39,7 @@ const DeckPage = ({
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:url" content={getAbsoluteUrl(router.pathname)} />
+        <meta property="og:url" content={router.asPath} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={deck.name} />
         <meta property="og:description" content={deck.description} />
