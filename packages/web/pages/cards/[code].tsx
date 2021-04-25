@@ -59,7 +59,7 @@ export async function getStaticProps({ params }) {
     props: {
       rawCard: card.raw,
       meta: {
-        imageUrl: card.imageUriSet[0],
+        imageUrl: card.imageUriSet?.length ? card.imageUriSet[0] : '',
         title: card.name,
         url: getAbsoluteUrl(`/cards/${code}`),
       },
