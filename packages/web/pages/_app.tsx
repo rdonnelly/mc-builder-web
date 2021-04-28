@@ -1,7 +1,6 @@
 import '../styles/globals.css';
 
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'styled-components/native';
 import useDarkMode from 'use-dark-mode';
@@ -38,15 +37,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function MyApp({ Component, pageProps }) {
-  const [isMounted, setIsMounted] = useState(false);
   const darkmode = useDarkMode(false);
 
   const theme = darkmode.value ? darkTheme : lightTheme;
-  const hasWindow = typeof window !== 'undefined';
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     <>
@@ -69,7 +62,7 @@ function MyApp({ Component, pageProps }) {
             crossOrigin=""
           />
         </Head>
-        {(isMounted || !hasWindow) && <Component {...pageProps} />}
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
