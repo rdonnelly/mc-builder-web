@@ -40,7 +40,9 @@ const GlobalStyle = createGlobalStyle`
 function MyApp({ Component, pageProps }) {
   const [isMounted, setIsMounted] = useState(false);
   const darkmode = useDarkMode(false);
+
   const theme = darkmode.value ? darkTheme : lightTheme;
+  const hasWindow = typeof window !== 'undefined';
 
   useEffect(() => {
     setIsMounted(true);
@@ -67,7 +69,7 @@ function MyApp({ Component, pageProps }) {
             crossOrigin=""
           />
         </Head>
-        {isMounted && <Component {...pageProps} />}
+        {(isMounted || !hasWindow) && <Component {...pageProps} />}
       </ThemeProvider>
     </>
   );

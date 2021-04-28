@@ -8,6 +8,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
         alias: {
           '@shared': 'shared/src',
+          '^react-native$': 'react-native-web',
         },
       },
     ],

@@ -1,6 +1,7 @@
 const withTM = require('next-transpile-modules')([
   'shared',
   'styled-components',
+  'styled-components/native',
   'react-native-render-html',
   'react-native-vector-icons/dist',
 ]);
@@ -12,7 +13,6 @@ module.exports = withTM({
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
       'react-native-vector-icons/FontAwesome5Pro$':
         'react-native-vector-icons/dist/FontAwesome5Pro',

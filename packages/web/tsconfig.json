@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
     "paths": {
       "@shared/*": [
         "../shared/src/*"
