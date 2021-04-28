@@ -5,36 +5,17 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import { Children } from 'react';
 import { AppRegistry } from 'react-native';
-import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     AppRegistry.registerComponent('MCBuilder', () => Main);
 
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+    const { getStyleElement } = AppRegistry.getApplication('MCBuilder');
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
+    const page = await Document.getInitialProps(ctx);
+    return { ...page, styles: Children.toArray([getStyleElement()]) };
   }
 
   render() {
@@ -42,7 +23,6 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <body>
-          <script src="noflash.js" />
           <Main />
           <NextScript />
         </body>

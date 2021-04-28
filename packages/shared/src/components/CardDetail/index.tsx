@@ -55,7 +55,7 @@ const CardDetail = ({
 const CardDetailContainer = styled(base.Container)<{ width: number }>`
   background-color: ${colors.white};
   margin: 0 auto;
-  width: ${({ width }) => `${width}px`};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
 `;
 
 const ContainerScrollView = styled(ScrollView)`
