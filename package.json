@@ -14,10 +14,13 @@
     "web": "yarn workspace web dev"
   },
   "dependencies": {
+    "babel-plugin-react-native-web": "^0.16.3",
     "lodash": "^4.17.15",
     "marvelsdb-json-data": "https://github.com/rdonnelly/marvelsdb-json-data.git#main",
     "memoize-one": "^5.1.1",
-    "nanoid": "^3.1.20"
+    "nanoid": "^3.1.20",
+    "next": "^10.2.3",
+    "react-native-web": "^0.16.3"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
@@ -30,7 +33,7 @@
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.2.1",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.0.0",
     "typescript": "^4.1.3"
   }
 }
