@@ -8,32 +8,44 @@ import useDarkMode from 'use-dark-mode';
 import { darkTheme, lightTheme } from '@shared/styles';
 
 const GlobalStyle = createGlobalStyle`
-  * {
+  *, *::before, *::after {
     box-sizing: border-box;
   }
 
-  html,
-  body {
-    padding: 0;
+  * {
     margin: 0;
+  }
+
+  html, body, #__next {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  }
-
-  html {
     height: 100%;
   }
 
   body {
-    height: 100%;
-    overflow: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
   }
 
   #__next {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    isolation: isolate;
   }
+
 `;
 
 function MyApp({ Component, pageProps }) {
